@@ -5,7 +5,7 @@ import asyncio
 import os
 
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
-CHANNEL_ID = int(os.getenv(DISCORD_CHANNEL_ID))   # your channel ID (integer)
+CHANNEL_ID = int(os.getenv('DISCORD_CHANNEL_ID'))   # your channel ID (integer)
 NEWS_API_KEY = os.getenv('NEWSAPI_KEY')
 
 RSS_FEEDS = [
