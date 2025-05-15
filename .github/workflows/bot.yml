@@ -1,16 +1,17 @@
-name: Cyber News Bot
+name: Cyber-bot
 
 on:
   schedule:
-    - cron: '0 * * * *'  # every hour
-  workflow_dispatch:     # optional manual run
+    - cron: '0 * * * *'  # runs every hour
+  workflow_dispatch:      # allows manual trigger
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -22,10 +23,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run the bot
+    - name: Run Discord bot
       env:
         DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
         DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
         NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
-      run: |
-        python code.py
+      run: python code.py
+
